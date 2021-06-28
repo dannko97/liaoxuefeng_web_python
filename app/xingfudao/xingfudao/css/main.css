@@ -1,0 +1,58 @@
+.mui-search{
+	width: 88%;
+}
+
+.mui-pull-right{
+	line-height: 44px;
+	font-size: 14px;
+	color: white;
+}
+
+.mui-bar-nav{
+	background-color: pink;
+}
+
+#grid{
+	margin-bottom: 20px;
+}
+
+#paishe{
+	background-color: white;
+}
+
+.more{
+	float: right;
+	font-size: 0.9375rem;
+	color: dimgray;
+	padding-right: 0.3125rem;
+}
+
+.hunsha{
+	font-size: 0.75rem;
+	padding-left: 5px;
+}
+
+#paishe ul{
+	background-color: white;
+}
+
+a:link{
+	color: dimgray;
+}
+a:visited{
+	color: gray;
+}
+a:hover{
+	color: red;
+}
+a:active{
+	color: dimgray;
+}
+
+#mlist{
+	background-color: white;
+}
+
+#mlist img{
+	width: 200px;
+}

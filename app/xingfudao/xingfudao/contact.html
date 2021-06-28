@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color: pink;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>
+			<h1 class="mui-title" style="color: white;">通讯录</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view" id="cons">
+
+			</ul>
+		</div>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+				//获取通讯录对象
+				plus.contacts.getAddressBook(
+					plus.contacts.ADDRESSBOOK_PHONE,
+					function(ADDRESSBOOK) {
+						// console.log(JSON.stringify());
+						//对回调结果进行处理
+						ADDRESSBOOK.find([],function(res){
+							console.log(JSON.stringify(res));
+							//创建一个用于存储每个联系人li标签的容器
+							var li_str = "";
+							//循环处理res中数据
+							for(var i=0; i<res.length; i++){
+								//判断每次循环产生的电话号码是否符合要求
+								if(res[i].phoneNumbers.length==0){
+									continue;
+								}
+								//如果有，就拼接li字符串
+								li_str+= '<li class="mui-table-view-cell" onclick="dial(\''+res[i].phoneNumbers[0].value+'\')">'
+									   +'<a class="mui-navigate-right">'
+											+'<span>'+res[i].displayName+'</span>'
+											+'<span>'+res[i].phoneNumbers[0].value+'</span>'
+										+'</a>'
+										+'</li>';
+							}
+							//将li标签字符串嵌入ul标签中
+							document.getElementById("cons").innerHTML = li_str; 
+						} );
+					},
+					function(e) {
+						alert("Get address book failed" + e);
+					}
+				);
+				
+				
+			});
+			//拨打电话的函数
+			function dial(number){
+				//对传递过来的电话号码进行处理
+				var telNo = number.replace(/\s*/g,"");
+				plus.device.dial(telNo, confirm);
+			}
+		</script>
+	</body>
+
+</html>

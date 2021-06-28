@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<style type="text/css">
+			.mui-bar-nav{
+				background-color: pink;
+				color: white;
+			}
+			.mui-title{
+				color: white;
+			}
+			.mui-content ul{
+				margin-bottom: 0.625rem;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">h5plus</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+					<li class="mui-table-view-cell" id="vibrate">
+						<a class="mui-navigate-right">
+							震动
+						</a>
+					</li>
+					<li class="mui-table-view-cell" id="beep">
+						<a class="mui-navigate-right" >
+							 蜂鸣声
+						</a>
+					</li>
+					</ul>
+					<ul class="mui-table-view">
+					<li class="mui-table-view-cell" id="pick">
+						<a class="mui-navigate-right">
+							 相册
+						</a>
+					</li>
+					<li class="mui-table-view-cell" id="camera">
+						<a class="mui-navigate-right">
+							 拍照
+						</a>
+					</li>
+					<li class="mui-table-view-cell" id="contact">
+						<a class="mui-navigate-right">
+							 通讯录
+						</a>
+					</li>
+					</ul>
+					<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							 扫一扫
+						</a>
+					</li><li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							 摇一摇
+						</a>
+					</li>
+				</ul>
+				<!-- 相册图片呈现位置 -->
+				<div id="img">
+					<!-- <img src="" width="100%">
+					<video src="" controls="" autoplay="autoplay" width="100%"></video> -->
+				</div>
+		</div>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function(){
+				//蜂鸣声
+				document.getElementById("beep").addEventListener("tap",function(){
+					plus.device.beep();
+				});
+				//震动
+				document.getElementById("vibrate").addEventListener("tap",function(){
+					plus.device.vibrate();
+				});
+				//通讯录
+				document.getElementById("contact").addEventListener("tap",function(){
+					mui.openWindow({
+						url:"contact.html",
+						id:"xingfudao_contact"
+					});
+				});
+				//相册
+				document.getElementById("pick").addEventListener("tap",function(){
+					// plus.gallery.pick(
+					// 	function(path){
+					// 		console.log(path);
+					// 		var allImgExt = ".jpg|.jeg|.gif|.bmp|.png";
+					// 		//将所选文件的扩展名截取并转为小写
+					// 		var extName = path.substring(path.lastIndexOf(".")).toLowerCase();
+					// 		if(allImgExt.indexOf(extName+"|")==-1){
+					// 			//视频文件
+					// 			document.getElementById("img").innerHTML= '<video src="'+path+'" controls="" autoplay="autoplay" width="100%"></video>';
+					// 			}else{
+					// 			//图片文件
+					// 			document.getElementById("img").innerHTML='<img src="'+path+'" width="100%">';
+					// 		}
+					// 	},
+					// 	function(e){
+					// 		alert("取消照片选择");
+					// 	},
+					// 	{filter:"none"}
+					// );
+					
+					//多个图片或视频文件的选择
+					plus.gallery.pick(
+						function(f){//表示存储多个文件路径的数组
+							for(var i in f.files){
+								console.log(f.files[i]);
+								var path = f.files[i];
+								var allImgExt = ".jpg|.jeg|.gif|.bmp|.png";
+								//将所选文件的扩展名截取并转为小写
+								var extName = path.substring(path.lastIndexOf(".")).toLowerCase();
+								if(allImgExt.indexOf(extName+"|")==-1){
+									//视频文件
+									document.getElementById("img").innerHTML=document.getElementById("img").innerHTML+ '<video src="'+path+'" controls="" autoplay="autoplay" width="100%"></video>';
+									}else{
+									//图片文件
+									document.getElementById("img").innerHTML=document.getElementById("img").innerHTML+'<img src="'+path+'" width="100%">';
+								}
+							}
+						},
+						function(e){
+							alert("取消照片选择");
+						},
+						{filter:"none", multiple:true}
+					);
+				});
+			    });
+				
+				//拍照
+				document.getElementById("camera").addEventListener("tap",function(){
+					//获取摄像头对象
+					var cmr = plus.camera.getCamera();
+					var res = cmr.supportedImageResolutions[0];//分辨率
+					var fmt = cmr.supportedImageFormats[0];//格式
+					console.log("分辨率："+res);
+					console.log("格式："+fmt);
+					cmr.captureImage(
+					function(rs){
+						var path = "file://" + plus.io.convertLocalFileSystemURL(eval(JSON.stringify(rs)));
+						console.log("图片路径："+path);
+						//动态将图片展示在id为img的容器中
+						document.getElementById("img").innerHTML='<img src="'+path+'" width="100%">';
+					},
+					function(e){
+						alert(e.message+"取消拍照");
+					},
+					{resolution:res,format:fmt}
+					);
+				});
+		</script>
+	</body>
+
+</html>

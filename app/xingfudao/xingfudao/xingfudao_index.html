@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/main.css">
+		<script src="js/iconfont.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 引入图标js -->
+		<style type="text/css">
+			.icon{
+				width: 1em;
+				height: 1em;
+				vertical-align: -0.15em;
+				fill: currentcolor;
+				overflow: hidden;
+				/* 图标大小 */
+				/* font-size: 12px; */ 
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 头部 -->
+		<header class="mui-bar mui-bar-nav">
+			<div class="mui-input-row mui-pull-left mui-search">
+				<input type="search" class="mui-input-clear" placeholder="搜索更多的gakki" style="background-color: white;">
+			</div>
+			<span class="mui-pull-right" id="yuyue">预约</span>
+		</header>
+		
+		<!-- 主体 -->
+		<div class="mui-content">
+			<!-- 轮播图 msl -->
+			<div id="slider" class="mui-slider" >
+			  <div class="mui-slider-group mui-slider-loop">
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+				  <a href="#">
+					<img src="./gakki/4.jpg">
+				  </a>
+				</div>
+				<!-- 第一张 -->
+				<div class="mui-slider-item">
+				  <a href="https://www.baidu.com/s?wd=gakki">
+					<img src="./gakki/7.jpg" width="100%">
+				  </a>
+				</div>
+				<!-- 第二张 -->
+				<div class="mui-slider-item">
+				  <a href="#">
+					<img src="./gakki/3.jpg">
+				  </a>
+				</div>
+				<!-- 第三张 -->
+				<div class="mui-slider-item">
+				  <a href="#">
+					<img src="./gakki/4.jpg">
+				  </a>
+				</div>
+				<!-- 第四张 -->
+				<div class="mui-slider-item">
+				  <a href="#">
+					<img src="./gakki/5.jpg">
+				  </a>
+				</div>
+				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+				  <a href="#">
+					<img src="./gakki/7.jpg">
+				  </a>
+				</div>
+			  </div>
+			  <div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			  </div>
+			</div>
+			
+			<!-- 九宫格 mgr -->
+			<ul id="grid" class="mui-table-view mui-grid-view mui-grid-9" style="background-color: white">
+			<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+				<a href="http://www.imomoe.ai/">
+					<span class="mui-icon mui-icon-home"></span>
+					<div class="mui-media-body">Home</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+				<a href="https://www.booktxt.net/2_1614/">
+					<span class="mui-icon mui-icon-email"><span class="mui-badge mui-badge-red">5</span></span>
+					<div class="mui-media-body">Email</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-chatbubble"></span>
+					<div class="mui-media-body">Chat</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-location"></span>
+					<div class="mui-media-body">Location</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+				<a href="#">
+					<!-- 替换图标 -->
+					<span class="mui-icon">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-aiqing"></use>
+						</svg>
+					</span>
+					<div class="mui-media-body">Heart</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-phone"></span>
+					<div class="mui-media-body">Phone</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-qq"></span>
+					<div class="mui-media-body">QQ</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-weixin"></span>
+					<div class="mui-media-body">Wechat</div>
+				</a>
+			</li>
+				</ul>
+			
+			<!-- 婚纱拍摄 -->
+			<div id="paishe">
+				<div>
+					<span style="background-color: red;">&nbsp;</span>
+					<span class="hunsha">婚纱拍摄</span>
+					<span class="more"><a href="http://www.baidu.com">更多&gt;</a></span>
+				</div>
+				<!-- 九宫格 -->
+				<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<img src="gakki/jiehun.jpg" width="100%">
+						<br>
+						<br>
+						<div class="mui-media-body">私奔到海</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<img src="gakki/jiehun2.jpg" width="100%">
+						<div class="mui-media-body">城市热恋</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<img src="gakki/jiehun4.jpg" width="100%">
+						<div class="mui-media-body">浪漫花海</div>
+					</a>
+				</li>
+				</ul>
+				
+			</div>
+			
+			<!-- 图文列表 mli -->
+			<div id="mlist">
+				<div>
+					<span style="background-color: red;">&nbsp;</span>
+					<span class="hunsha">睡前故事</span>
+					<span class="more"><a href="http://www.baidu.com">更多&gt;</a></span>
+				</div>
+			
+			
+				<ul class="mui-table-view" >
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="./gakki/2.jpg">
+							<div class="mui-media-body">
+								幸福
+								<p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="./gakki/1.jpg">
+							<div class="mui-media-body">
+								gakki的smile
+								<p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="./gakki/4.jpg">
+							<div class="mui-media-body">
+								和我结婚
+								<p class="mui-ellipsis">烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		
+		
+		</div>
+		
+		
+		<script src="js/mui.js"></script>
+		
+		<!-- 内嵌js -->
+		<script type="text/javascript">
+			mui.init();
+			//获取当前文档中轮播图组件对象
+			var sliderObj = mui("#slider");
+			sliderObj.slider({
+				interval:1000
+			});
+			document.getElementById("yuyue").addEventListener("tap",function(){
+				plus.device.dial(10086);
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+	<style type="text/css">
+		.mui-active .mui-icon, .mui-active .mui-tab-label{
+			color: deeppink;
+		}
+	</style>
+    
+</head>
+<body>
+	<!-- 底部选项卡 -->
+	<nav class="mui-bar mui-bar-tab">
+		<a class="mui-tab-item mui-active" href="xingfudao_index.html">
+			<span class="mui-icon mui-icon-home"></span>
+			<span class="mui-tab-label">首页</span>
+		</a>
+		<a class="mui-tab-item" href="contact.html">
+			<span class="mui-icon mui-icon-contact"></span>
+			<span class="mui-tab-label">通讯录</span>
+		</a>
+		<a class="mui-tab-item" href="h5plus.html">
+			<span class="mui-icon mui-icon-gear"></span>
+			<span class="mui-tab-label">h5plus</span>
+		</a>
+		<a class="mui-tab-item" href="wode.html">
+			<span class="mui-icon mui-icon-person"></span>
+			<span class="mui-tab-label">我的</span>
+		</a>
+	</nav>
+	
+	<script type="text/javascript" charset="utf-8">
+	  	mui.init();
+		//实现底部选项卡切换功能
+		mui.plusReady(function(){
+			//定义一个容器，用于存储底部选项卡所关联的页面
+			var pages = ["xingfudao_index.html","contact.html","h5plus.html","wode.html"];
+			//获取当前窗口对象
+			var ws = plus.webview.currentWebview();
+			//设置页面窗口样式
+			var pagestyle = {
+				top:"0px",
+				bottom:"50px"
+			};
+			//循环数组，为每一个页面创建webview窗口对象
+			for(var i=0; i< pages.length; i++){
+				//将每次循环提取的页面创建为webview窗口对象
+				var item = plus.webview.create(pages[i], pages[i],pagestyle);
+				//将每个webview窗口对象追加至当前ws对象中
+				ws.append(item);
+			}
+			//设置默认打开窗口
+			plus.webview.show(pages[0]);
+			//选项卡事件监听
+			mui(".mui-bar-tab").on("tap","a",function(){
+				//获取被点击a标签的href属性值
+				var href = this.getAttribute("href");
+				//展示对应的页面
+				plus.webview.show(href);
+			});
+			
+		});
+	</script>
+</body>
+</html>
