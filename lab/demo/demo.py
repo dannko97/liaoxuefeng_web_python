@@ -27,7 +27,7 @@ class mainwindow(QMainWindow):
             # self.refeshShow()
 
             # 固定大小显示
-            self.ui.showlabel.setPixmap(QPixmap(imgName).scaled(self.ui.showlabel.width(), self.ui.showlabel.height()))
+            self.ui.showlabel.setPixmap(QPixmap(imgName).scaled(self.ui.showlabel.width(), self.ui.showlabel.height(), Qt.KeepAspectRatio))
             # 跟随图片原始大小
             # self.ui.showlabel.resize(self.img.shape[1], self.img.shape[0])
             # self.ui.showlabel.setPixmap(QPixmap(imgName))
@@ -53,7 +53,7 @@ class mainwindow(QMainWindow):
         self.qImg = QImage(self.img.data, width, height, bytesPerLine,
                            QImage.Format_RGB888).rgbSwapped()
         # 将Qimage显示出来
-        self.ui.showlabel.setPixmap(QPixmap.fromImage(self.qImg).scaled(self.ui.showlabel.width(), self.ui.showlabel.height()))
+        self.ui.showlabel.setPixmap(QPixmap.fromImage(self.qImg).scaled(self.ui.showlabel.width(), self.ui.showlabel.height(), Qt.KeepAspectRatio))
 
 
     # 打开视频
