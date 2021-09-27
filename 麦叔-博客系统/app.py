@@ -1,12 +1,12 @@
 from flask import Flask, render_template
 
 
-
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return render_template("templates/index.html")
+    # return '我的博客系统'
+    return render_template("index.html")
 
-#set Flask_APP=blog;set Flask_ENV=development;flask run
+
